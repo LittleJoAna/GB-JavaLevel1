@@ -4,14 +4,6 @@ import java.util.Arrays;
 
 public class HomeWork {
     /*
-
-
-
-
-6 ** Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true если в
-массиве есть место, в котором сумма левой и правой части массива равны. Примеры: checkBalance([1, 1, 1, || 2, 1]) → true,
-checkBalance ([2, 1, 1, 2, 1]) → false, checkBalance ([10, || 1, 2, 3, 4]) → true. Абстрактная граница показана символами ||,
-эти символы в массив не входят.
 7 *** Написать метод, которому на вход подаётся одномерный массив и число n (может быть положительным, или отрицательным),
 при этом метод должен циклически сместить все элементы массива на n позиций.
 8 **** Не пользоваться вспомогательным массивом при решении задачи 7. */
@@ -45,14 +37,22 @@ checkBalance ([2, 1, 1, 2, 1]) → false, checkBalance ([10, || 1, 2, 3, 4]) →
         fillingDiaganal(arrTask5);
         printingATwoDimensionalArray(arrTask5);
 
-        /*System.out.println("Задание №6");
-        int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        System.out.println(Arrays.toString(arrTask3));
-        numbersLessThanSixAreDoubled(arrTask3);
-        System.out.println(Arrays.toString(arrTask3)  + "\n");
+        System.out.println("Задание №6");
+        int[] arrTask6 = {1, 1, 1, 2, 1}; //true
+        int[] arrTask6_1 = {2, 1, 1, 2, 1}; //false
+        int[] arrTask6_2 = {10, 1, 2, 3, 4}; //true
+        System.out.println(Arrays.toString(arrTask6));
+        System.out.println(checkBalance(arrTask6));
+        System.out.println();
+        System.out.println(Arrays.toString(arrTask6_1));
+        System.out.println(checkBalance(arrTask6_1));
+        System.out.println();
+        System.out.println(Arrays.toString(arrTask6_2));
+        System.out.println(checkBalance(arrTask6_2));
+        System.out.println();
 
         System.out.println("Задание №7");
-        int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        /*int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println(Arrays.toString(arrTask3));
         numbersLessThanSixAreDoubled(arrTask3);
         System.out.println(Arrays.toString(arrTask3)  + "\n");
@@ -150,15 +150,21 @@ checkBalance ([2, 1, 1, 2, 1]) → false, checkBalance ([10, || 1, 2, 3, 4]) →
      */
     public static void fillingDiaganal (int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
+            //внешний цикл заполняет главную диагональ по направлению слева/сверху - справа/вниз
             arr[i][i] = 1;
-            /*
-            for (int j = 0; j < arr[i].length; j++) {}
-             */
+            for (int j = arr.length - 1; j < arr[i].length; j++) {
+                //внутренний цикл заполняет обратную диагональ по направлению справа/сверху - слева/вниз
+                arr[i][j - i] = 1;
+            }
+
 
         }
     }
 
     public static void printingATwoDimensionalArray (int[][] arr) {
+        /*
+        метод распечатывает в консоль двумерный заданный массив
+         */
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 System.out.print(arr[i][j] + " ");
@@ -166,5 +172,27 @@ checkBalance ([2, 1, 1, 2, 1]) → false, checkBalance ([10, || 1, 2, 3, 4]) →
             System.out.println();
         }
         System.out.println();
+    }
+
+    /*
+    6 ** Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true если в
+    массиве есть место, в котором сумма левой и правой части массива равны. Примеры: checkBalance([1, 1, 1, || 2, 1]) → true,
+    checkBalance ([2, 1, 1, 2, 1]) → false, checkBalance ([10, || 1, 2, 3, 4]) → true. Абстрактная граница показана символами ||,
+    эти символы в массив не входят.
+    */
+
+    public static boolean checkBalance (int[] arr) {
+        int leftBalance = arr[0], rightBalance = arr.length, count = arr.length;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = arr.length - 1; j < arr.length; j++) {
+
+            }
+
+            /*if (leftBalance != rightBalance) {
+            leftBalance += arr[i];
+            rightBalance += arr.length - i;
+            }*/
+        }
+        return false;
     }
 }
