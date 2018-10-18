@@ -37,18 +37,36 @@ public class HomeWork {
         fillingDiaganal(arrTask5);
         printingATwoDimensionalArray(arrTask5);
 
-        System.out.println("Задание №6");
+        System.out.println("Задание №6. Решение 1");
         int[] arrTask6 = {1, 1, 1, 2, 1}; //true
         int[] arrTask6_1 = {2, 1, 1, 2, 1}; //false
         int[] arrTask6_2 = {10, 1, 2, 3, 4}; //true
+        int[] arrTask6_3 = {2, 1, 5};
         System.out.println(Arrays.toString(arrTask6));
-        System.out.println(checkBalance(arrTask6));
+        System.out.println(checkBalance_part1(arrTask6));
         System.out.println();
         System.out.println(Arrays.toString(arrTask6_1));
-        System.out.println(checkBalance(arrTask6_1));
+        System.out.println(checkBalance_part1(arrTask6_1));
         System.out.println();
         System.out.println(Arrays.toString(arrTask6_2));
-        System.out.println(checkBalance(arrTask6_2));
+        System.out.println(checkBalance_part1(arrTask6_2));
+        System.out.println();
+        System.out.println(Arrays.toString(arrTask6_3));
+        System.out.println(checkBalance_part1(arrTask6_3));
+        System.out.println();
+
+        System.out.println("Задание №6. Решение 2");
+        System.out.println(Arrays.toString(arrTask6));
+        System.out.println(checkBalance_part2(arrTask6));
+        System.out.println();
+        System.out.println(Arrays.toString(arrTask6_1));
+        System.out.println(checkBalance_part2(arrTask6_1));
+        System.out.println();
+        System.out.println(Arrays.toString(arrTask6_2));
+        System.out.println(checkBalance_part2(arrTask6_2));
+        System.out.println();
+        System.out.println(Arrays.toString(arrTask6_3));
+        System.out.println(checkBalance_part2(arrTask6_3));
         System.out.println();
 
         System.out.println("Задание №7");
@@ -181,18 +199,51 @@ public class HomeWork {
     эти символы в массив не входят.
     */
 
-    public static boolean checkBalance (int[] arr) {
-        int leftBalance = arr[0], rightBalance = arr.length, count = arr.length;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = arr.length - 1; j < arr.length; j++) {
-
-            }
-
-            /*if (leftBalance != rightBalance) {
+    public static boolean checkBalance_part1 (int[] arr) {
+        /*
+        метод создает две переменные, в которые будет складывать правую и левую часть. в цикле берется первый элемент
+        массива и записывается его значение в переменную "слева", далее входим во второй цикл и складываем значения всех
+        остальных элементов массива, кроме первого и записываем это значение в переменную "справа", после этого сравниваем
+        значения переменных, в случае если они равны - баланс найдем, возвращаем true. В случае, если значения не равны,
+        обнуляем значение переменной "справа" и считаем далее, на этот раз прибавляя к первому элементу в переменной "слева"
+        значение второго элемента, далее заходим во внутренний цикл и складываем там все элементы массива, за исключением
+        двух тех, которые сложили в внешнем цикле, далее повторяется проверка на равно и так цикл крутится до тех пор пора
+        не будет найден баланс, либо пока не закончится массив, в этом случае будет возвращено значение false
+         */
+        int leftBalance = 0, rightBalance = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
             leftBalance += arr[i];
-            rightBalance += arr.length - i;
-            }*/
+            for (int j = arr.length - 1; j > i; j--) {
+                rightBalance += arr[j];
+            }
+            System.out.println(leftBalance + " == " + rightBalance);
+            if (leftBalance == rightBalance) return true;
+            else rightBalance = 0;
+
         }
         return false;
     }
+    public static boolean checkBalance_part2 (int[] arr) {
+        /*
+        метод создает переменную, в которую считает сумму всех элементов массива. если она не делится на 2 без остатка -
+        значит баланса нет, возвращается false. Если сумма делится на 2 без остатка, тогда берется вторая переменная,
+        к которой прибавляются последовательно значения элементов массива и сравниваются с общей суммой поделенной на 2,
+        в случае, если найдено такое значение, которое равно сумме поледенной на 2, баланс найден и возвращается true,
+        иначе возвращается false
+        Алгоритм решения придумал Сергей Александров @sergei2018a
+        */
+        int sum = 0, balance = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        if (sum%2 != 0) return false;
+
+        for (int i = 0; i < arr.length; i++) {
+            balance += arr[i];
+            if (balance == (sum / 2)) return true;
+        }
+
+        return false;
+    }
+
 }
