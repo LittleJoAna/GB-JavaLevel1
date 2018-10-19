@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class HomeWork {
     /*
-7 *** Написать метод, которому на вход подаётся одномерный массив и число n (может быть положительным, или отрицательным),
-при этом метод должен циклически сместить все элементы массива на n позиций.
+
 8 **** Не пользоваться вспомогательным массивом при решении задачи 7. */
     public static void main(String[] args) {
         System.out.println("Задание №1");
@@ -18,16 +17,16 @@ public class HomeWork {
         int[] arrTask2 = new int[8];
         System.out.println(Arrays.toString(arrTask2));
         fillingArray(arrTask2);
-        System.out.println(Arrays.toString(arrTask2)  + "\n");
+        System.out.println(Arrays.toString(arrTask2) + "\n");
 
         System.out.println("Задание №3");
         int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println(Arrays.toString(arrTask3));
         numbersLessThanSixAreDoubled(arrTask3);
-        System.out.println(Arrays.toString(arrTask3)  + "\n");
+        System.out.println(Arrays.toString(arrTask3) + "\n");
 
         System.out.println("Задание №4");
-        System.out.println(Arrays.toString(arrTask3)  +
+        System.out.println(Arrays.toString(arrTask3) +
                 "\nМинимальный элемент массива - " + minElementOfTheArray(arrTask3) +
                 "\nМаксимальный элемент массива - " + maxElementOfTheArray(arrTask3) + "\n");
 
@@ -70,22 +69,27 @@ public class HomeWork {
         System.out.println();
 
         System.out.println("Задание №7");
-        /*int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        System.out.println(Arrays.toString(arrTask3));
-        numbersLessThanSixAreDoubled(arrTask3);
-        System.out.println(Arrays.toString(arrTask3)  + "\n");
+        int[] arrTask7 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] arrTask7_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        System.out.println(Arrays.toString(arrTask7));
+        moveArrayElementsTask7(arrTask7, 2);
+        System.out.println(Arrays.toString(arrTask7));
+        System.out.println(Arrays.toString(arrTask7_1));
+        moveArrayElementsTask7(arrTask7_1, -2);
+        System.out.println(Arrays.toString(arrTask7_1)  + "\n");
 
         System.out.println("Задание №8");
-        int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        /*int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println(Arrays.toString(arrTask3));
         numbersLessThanSixAreDoubled(arrTask3);
         System.out.println(Arrays.toString(arrTask3)  + "\n");*/
     }
+
     /*
     1 Задать целочисленный массив, состоящий из элементов 0 и 1. Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ].
     Написать метод, заменяющий в принятом массиве 0 на 1, 1 на 0;
      */
-    public static void replacingZeroWithOne (int [] arr) {
+    public static void replacingZeroWithOne(int[] arr) {
         /* программа идет по массиву с помощью цикла for, перебирая все его элементы,
         при нахождении элемента равного 0 заменяет его значение на 1, во всех остальных случаях
         заменяет значение элемента массива на 0
@@ -93,8 +97,7 @@ public class HomeWork {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
                 arr[i] = 1;
-            }
-            else {
+            } else {
                 arr[i] = 0;
             }
         }
@@ -104,7 +107,7 @@ public class HomeWork {
     2 Задать пустой целочисленный массив размером 8. Написать метод, который помощью цикла заполнит его значениями
 1 4 7 10 13 16 19 22;
      */
-    public static void fillingArray (int[] arr) {
+    public static void fillingArray(int[] arr) {
         /*
         программа проходит по массиву с помощью цикла и заполняет элементы массива значениями, вычисляемыми с помощью формулы
          */
@@ -112,11 +115,12 @@ public class HomeWork {
             arr[i] = (i * 3) + 1;
         }
     }
+
     /*
     3 Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ], написать метод, принимающий на вход массив и умножающий
 числа меньше 6 на 2;
      */
-    public static void numbersLessThanSixAreDoubled (int[] arr) {
+    public static void numbersLessThanSixAreDoubled(int[] arr) {
         /*
         программа перебивает элементы массива с помощью цикла и принахождении элемента меньше 6 удваивает его значение
          */
@@ -130,7 +134,7 @@ public class HomeWork {
     /*
     4 Задать одномерный массив. Написать методы поиска в нём минимального и максимального элемента;
      */
-    public static int minElementOfTheArray (int[] arr) {
+    public static int minElementOfTheArray(int[] arr) {
         /*
         программа перебирает элементы массива и сравнивает их между собой. при нахождении элемента меньше чем значение
         специально созданной для этого переменной, которой в самом начале присуждается значение первого элемента массива,
@@ -146,7 +150,7 @@ public class HomeWork {
         return min;
     }
 
-    public static int maxElementOfTheArray (int[] arr) {
+    public static int maxElementOfTheArray(int[] arr) {
         /*
         программа перебирает элементы массива и сравнивает их между собой. при нахождении элемента больше чем значение
         специально созданной для этого переменной, которой в самом начале присуждается значение первого элемента массива,
@@ -166,7 +170,7 @@ public class HomeWork {
     5 * Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое), заполнить его диагональные
 элементы единицами, используя цикл(ы);
      */
-    public static void fillingDiaganal (int[][] arr) {
+    public static void fillingDiaganal(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             //внешний цикл заполняет главную диагональ по направлению слева/сверху - справа/вниз
             arr[i][i] = 1;
@@ -179,7 +183,7 @@ public class HomeWork {
         }
     }
 
-    public static void printingATwoDimensionalArray (int[][] arr) {
+    public static void printingATwoDimensionalArray(int[][] arr) {
         /*
         метод распечатывает в консоль двумерный заданный массив
          */
@@ -199,7 +203,7 @@ public class HomeWork {
     эти символы в массив не входят.
     */
 
-    public static boolean checkBalance_part1 (int[] arr) {
+    public static boolean checkBalance_part1(int[] arr) {
         /*
         метод создает две переменные, в которые будет складывать правую и левую часть. в цикле берется первый элемент
         массива и записывается его значение в переменную "слева", далее входим во второй цикл и складываем значения всех
@@ -223,7 +227,8 @@ public class HomeWork {
         }
         return false;
     }
-    public static boolean checkBalance_part2 (int[] arr) {
+
+    public static boolean checkBalance_part2(int[] arr) {
         /*
         метод создает переменную, в которую считает сумму всех элементов массива. если она не делится на 2 без остатка -
         значит баланса нет, возвращается false. Если сумма делится на 2 без остатка, тогда берется вторая переменная,
@@ -236,7 +241,7 @@ public class HomeWork {
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
         }
-        if (sum%2 != 0) return false;
+        if (sum % 2 != 0) return false;
 
         for (int i = 0; i < arr.length; i++) {
             balance += arr[i];
@@ -246,4 +251,39 @@ public class HomeWork {
         return false;
     }
 
+    /*
+    7 *** Написать метод, которому на вход подаётся одномерный массив и число n (может быть положительным, или отрицательным),
+при этом метод должен циклически сместить все элементы массива на n позиций.
+     */
+    public static void moveArrayElementsTask7(int[] arr, int n) {
+        /*
+        метод получает на вход массив и число. Сначала метод создает второй массив, куда копирует данные из первого
+        массива без изменений. Далее обрабатывает число для использования: если число больше длинны массива -
+        с помощью цикла из заданного числа вычитается длинна массива, пока число не станет меньше длинны массива. если
+        число положительное - метод переходит к циклу, в котором берет значения элементов и переносит их в конечный массив,
+        в соответствии со сдвигом. При положительном числе - сдвигается влево, при отрицательном - вправо.
+        при отрицательном заданном числе метод приводит его к числу в пределах длинны массива.
+         */
+        int[] arr2 = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i] = arr[i];
+        }
+        if (n > 0) {
+            while (!(n >= 0 && n <= arr.length)) {
+                n -= arr.length;
+            }
+
+        } else if (n < 0) {
+            while (n < arr.length * -1) {
+                n += arr.length;
+            }
+            n = arr.length + n;
+        }
+        for (int i = 0, j = n; j < arr.length; i++, j++) {
+            arr[i] = arr2[j];
+        }
+        for (int i = arr.length - n, j = 0; i < arr.length; i++, j++) {
+            arr[i] = arr2[j];
+        }
+    }
 }
