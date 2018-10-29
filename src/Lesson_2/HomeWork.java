@@ -3,10 +3,7 @@ package Lesson_2;
 import java.util.Arrays;
 
 public class HomeWork {
-    /*
-
-8 **** Не пользоваться вспомогательным массивом при решении задачи 7. */
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         System.out.println("Задание №1");
         int[] arrTask1 = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         System.out.println(Arrays.toString(arrTask1));
@@ -71,18 +68,26 @@ public class HomeWork {
         System.out.println("Задание №7");
         int[] arrTask7 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int[] arrTask7_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int n1 = 2;
+        int n2 = -2;
+        System.out.println(Arrays.toString(arrTask7) + " заданное число сдвига " + n1);
+        moveArrayElementsTask7(arrTask7, n1);
         System.out.println(Arrays.toString(arrTask7));
-        moveArrayElementsTask7(arrTask7, 2);
-        System.out.println(Arrays.toString(arrTask7));
-        System.out.println(Arrays.toString(arrTask7_1));
-        moveArrayElementsTask7(arrTask7_1, -2);
+        System.out.println(Arrays.toString(arrTask7_1) + " заданное число сдвига " + n2);
+        moveArrayElementsTask7(arrTask7_1, n2);
         System.out.println(Arrays.toString(arrTask7_1)  + "\n");
 
         System.out.println("Задание №8");
-        /*int[] arrTask3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        System.out.println(Arrays.toString(arrTask3));
-        numbersLessThanSixAreDoubled(arrTask3);
-        System.out.println(Arrays.toString(arrTask3)  + "\n");*/
+        int[] arrTask8 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] arrTask8_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int n3 = 47, n4 = -7;
+        System.out.println(Arrays.toString(arrTask8) + " заданное число сдвига " + n3);
+        moveArrayElementsTask8(arrTask8, n3);
+        System.out.println(Arrays.toString(arrTask8));
+        System.out.println(Arrays.toString(arrTask8_1) + " заданное число сдвига " + n4);
+        moveArrayElementsTask8(arrTask8_1, n4);
+        System.out.println(Arrays.toString(arrTask8_1));
+        System.out.println("\nДомашнее задание закончено!");
     }
 
     /*
@@ -251,23 +256,14 @@ public class HomeWork {
         return false;
     }
 
-    /*
-    7 *** Написать метод, которому на вход подаётся одномерный массив и число n (может быть положительным, или отрицательным),
-при этом метод должен циклически сместить все элементы массива на n позиций.
-     */
-    public static void moveArrayElementsTask7(int[] arr, int n) {
+    public static int formatN (int[] arr, int n) {
         /*
-        метод получает на вход массив и число. Сначала метод создает второй массив, куда копирует данные из первого
-        массива без изменений. Далее обрабатывает число для использования: если число больше длинны массива -
-        с помощью цикла из заданного числа вычитается длинна массива, пока число не станет меньше длинны массива. если
-        число положительное - метод переходит к циклу, в котором берет значения элементов и переносит их в конечный массив,
-        в соответствии со сдвигом. При положительном числе - сдвигается влево, при отрицательном - вправо.
-        при отрицательном заданном числе метод приводит его к числу в пределах длинны массива.
+        метод создан для того, чтобы привести число N в упражнениях 7 и 8 к рабочему виду, в связи с тем, что данный код
+        используется в этих 2 методах. Если число положительное и больше длинны массива - с помощью цикла из заданного
+        числа вычитается длина массива, пока число не станет меньше или равно длине массива. если число отрицательное -
+        к нему прибавляется длина массива до тех пор пока оно не станет положительным и в то же время меньше длины массива,
+        после этого к длине массива прибавляется вычисленное число N. После всех вычислений число N возвращается в метод
          */
-        int[] arr2 = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            arr2[i] = arr[i];
-        }
         if (n > 0) {
             while (!(n >= 0 && n <= arr.length)) {
                 n -= arr.length;
@@ -279,11 +275,52 @@ public class HomeWork {
             }
             n = arr.length + n;
         }
+        return n;
+    }
+
+
+    /*
+    7 *** Написать метод, которому на вход подаётся одномерный массив и число n (может быть положительным, или отрицательным),
+при этом метод должен циклически сместить все элементы массива на n позиций.
+     */
+    public static void moveArrayElementsTask7(int[] arr, int n) {
+        /*
+        метод получает на вход массив и число. Сначала метод создает второй массив, куда копирует данные из первого
+        массива без изменений. Далее с помощью вспомогательного метода число N приводится к рабочему виду - меньше длины
+        массива и больше 0. Метод переходит к циклу, в котором берет значения элементов и переносит их в конечный массив,
+        в соответствии со сдвигом. При положительном числе - сдвигается влево, при отрицательном - вправо.
+         */
+        int[] arr2 = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i] = arr[i];
+        }
+        n = formatN(arr, n);
         for (int i = 0, j = n; j < arr.length; i++, j++) {
             arr[i] = arr2[j];
         }
         for (int i = arr.length - n, j = 0; i < arr.length; i++, j++) {
             arr[i] = arr2[j];
+        }
+    }
+    /*
+    8 **** Не пользоваться вспомогательным массивом при решении задачи 7.
+     */
+    public static void moveArrayElementsTask8 (int[] arr, int n) {
+        /*
+        метод производит сдвиг элементов массива без вспомогательного массива. Для этого создается число А, в которое
+        записывается значение крайнего справа элемента, далее последовательно с каждой итерацией элементы сдвигаются
+        в соответствии со своим значением. Количество итераций зависит от заданного числа N. В конце каждой итерации
+        внешнего цикла на место первого элемента ставится значение из вспомогательной переменной А, куда после этого
+        снова записывается крайнее правое значение.
+         */
+        int a;
+        n = formatN(arr, n);
+        for (int i = 0; i < n; i++) {
+            a = arr[arr.length - 1];
+            for (int j = 1; j < arr.length; j++) {
+                arr[(arr.length - 1) - (j - 1)] = arr[(arr.length - 1) - j];
+            }
+            arr[0] = a;
         }
     }
 }
