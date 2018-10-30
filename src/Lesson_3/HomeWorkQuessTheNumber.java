@@ -1,6 +1,5 @@
 package Lesson_3;
 
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ public class HomeWorkQuessTheNumber {
     */
     private static boolean exit = false; //переменная для выхода из игры
     private static Scanner sc = new Scanner(System.in);
-    private static Random random = new Random(1);
+    private static Random random = new Random();
     private static int count = 0, attempt, number, max, answer, countGame, countWin, countLose;
 
     public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class HomeWorkQuessTheNumber {
             max = sc.nextInt();
             System.out.println("Введи количество попыток, с которых ты угадаешь это число!");
             attempt = sc.nextInt();
-            number = random.nextInt(max);
+            number = random.nextInt(max) + 1;
             System.out.println("максимальное число: " + max + "\nзагаданное число: " + number + "\nколичество попыток: " + attempt);
             System.out.println("Игра началась! \nКомпьютер загадал число от 0 до " + max + "!\nТвой ход!\n");
             runTheGame();
