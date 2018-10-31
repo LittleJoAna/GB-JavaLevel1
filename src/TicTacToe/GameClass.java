@@ -1,5 +1,6 @@
 package TicTacToe;
 
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -53,6 +54,7 @@ public class GameClass {
             x = SCANNER.nextInt() - 1;
             y = SCANNER.nextInt() - 1;
         } while (!isValidCell(x, y) || !isEmptyCell(x, y));
+//        System.out.println("игрок " + y + " " + x);
         field[y][x] = DOT_HUMAN;
     }
 
@@ -71,6 +73,7 @@ public class GameClass {
             y = RANDOM.nextInt(fieldSizeY);
 
         } while (!isEmptyCell(x, y));
+//        System.out.println("компьютер " + y + " " + x);
         field[y][x] = DOT_AI;
     }
 
@@ -95,11 +98,21 @@ public class GameClass {
             }
 
         }
-        for (int i = coordinateX, j = coordinateY, n = 0; i <= a && n < lineLengthForWin; i++, n++) { //проверка диагонали
+        for (int i = coordinateX, j = coordinateY, n = 0; (j <= a && i >= 0) && n < lineLengthForWin; i--, j++, n++) { //проверка диагонали
             if (field[i][j] == c) {
-                countVertical++;
+                countDiagonalUp++;
             }
-            if (countVertical == lineLengthForWin) {
+            if (countDiagonalUp == lineLengthForWin) {
+                return true;
+            }
+
+        }
+        for (int i = coordinateX, j = coordinateY, n = 0; (i <= a && j <= a) && n < lineLengthForWin; i++, j++, n++) { //проверка диагонали
+
+            if (field[i][j] == c) {
+                countDiagonalDown++;
+            }
+            if (countDiagonalDown == lineLengthForWin) {
                 return true;
             }
 
