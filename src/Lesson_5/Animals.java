@@ -26,6 +26,11 @@ public abstract class Animals {
         return color;
     }
 
+    @Override
+    public String toString() {
+        return getName() + ", " + getColor() + ", " + getAge() + " лет.";
+    }
+
     abstract boolean run(int lenghtRun);
 
     abstract boolean jump(float lenghtJump);

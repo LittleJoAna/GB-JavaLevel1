@@ -19,8 +19,22 @@ public class HomeWork {
         System.out.println("Впервые в мире! Забег животных! \nУчаствуют: ");
         Animals[] animals = {dog, cat, horse, bird};
         for (int i = 0; i < animals.length; i++) {
-            System.out.println(animals[i].getName() + ", " + animals[i].getColor() + ", " + animals[i].getAge() + " лет!");
+            System.out.println(animals[i].toString());
         }
-
+        int runLength = 800;
+        System.out.println("\nПервое испытание: забег на " + runLength + " метров!\nИтак, сейчас мы узнаем, кто же выдержал это испытание: ");
+        for (int i = 0; i < animals.length; i++) {
+            System.out.println(animals[i].getName() + (animals[i].run(runLength) ? "" : " не") + " пробежал!");
+        }
+        float jumpLength = 0.3f;
+        System.out.println("\nВторое испытание: прыжок на " + jumpLength + " метров!\nИтак, сейчас мы узнаем, кто же выдержал это испытание: ");
+        for (int i = 0; i < animals.length; i++) {
+            System.out.println(animals[i].getName() + (animals[i].jump(jumpLength) ? "" : " не") + " прыгнул!");
+        }
+        int swimLength = 50;
+        System.out.println("\nТретье испытание: заплыв на " + swimLength + " метров!\nИтак, сейчас мы узнаем, кто же выдержал это испытание: ");
+        for (int i = 0; i < animals.length; i++) {
+            System.out.println(animals[i].getName() + (animals[i].swim(swimLength) ? "" : " не") + " проплыл!");
+        }
     }
 }
