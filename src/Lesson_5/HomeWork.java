@@ -26,7 +26,7 @@ public class HomeWork {
         for (int i = 0; i < animals.length; i++) {
             System.out.println(animals[i].getName() + (animals[i].run(runLength) ? "" : " не") + " пробежал!");
         }
-        float jumpLength = 0.3f;
+        float jumpLength = 0.1f;
         System.out.println("\nВторое испытание: прыжок на " + jumpLength + " метров!\nИтак, сейчас мы узнаем, кто же выдержал это испытание: ");
         for (int i = 0; i < animals.length; i++) {
             System.out.println(animals[i].getName() + (animals[i].jump(jumpLength) ? "" : " не") + " прыгнул!");
