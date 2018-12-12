@@ -8,7 +8,6 @@ package Lesson_6;
  */
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class HomeWord {
@@ -89,20 +88,15 @@ public class HomeWord {
     }
 
     //4. ** Написать метод, проверяющий, есть ли указанное слово в папке
-    private static boolean isFindInDirectory (String dir, String word) throws FileNotFoundException, IOException{
+    private static boolean isFindInDirectory (String dir, String word) throws IOException{
         File file = new File(dir);
         if (!file.isDirectory()) return false;
         String[] arrFile = file.list();
-        //String nameFile;
-        System.out.println(file.getName() + Arrays.toString(arrFile));
         File fileArr;
-        //File absolName;
         for (int i = 0; i < arrFile.length; i++) {
             fileArr = new File(arrFile[i]);
             System.out.println(fileArr);
-            if (!fileArr.isFile()) {
-                continue;
-            } else if (fileArr.isFile()) {
+            if (fileArr.isFile()) {
                 if (isFindInFile(arrFile[i], word)) return true;
             }
         }
